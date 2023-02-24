@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Login page */
+  --login-background: #273043;
+  --login-color: #8B8B8B;
+  --login-button: #3BBBC8;
+
+  /* Page */
+  --background: #EFEFEF;
+  --header-footer: #273043;
+  --header-height: 180px;
+  --footer-height: 140px;
+
+  /* table */
+  --table-header-fill: #EAEAEA;
+  --table-header-text-color: #8B8B8B;
+  --table-row-alternete-fill: #F8F8F8;
+  --table-text-color: #000000;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Jost', sans-serif;
+}
+
+/* body {
+  background: #FFFFFF;
+}
+ */

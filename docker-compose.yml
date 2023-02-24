@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  db:
+    container_name: postgres
+    image: postgres:13.3
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+
+  web:
+    build:
+      context: ./backend
+    # command: >
+    #   sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    expose:
+      - ${DB_PORT}
+    env_file:
+      - .env
+    volumes:
+      - static:/usr/src/app/staticfiles
+    depends_on:
+      - db 
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    volumes:
+      - static:/usr/src/app/staticfiles
+    depends_on:
+      - web
+    # networks:
+    #   - web-network
+
+# networks:
+#   web-network:
+#     name: web-network
+
+volumes:
+  postgres_data:
+  static:
